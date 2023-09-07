@@ -25,3 +25,16 @@
 #container a {
   text-decoration: none;
 }
+
+#ContenedorBotonesHome{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 4rem;
+  margin-top: 30%;
+}
+
+.BotonesHome{
+  margin: 1rem;
+}
+
