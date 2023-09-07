@@ -18,6 +18,30 @@ const routes: Routes = [
     path: 'registro',
     loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
   },
+  {
+    path: 'registro-auto',
+    loadChildren: () => import('./pages/registro-auto/registro-auto.module').then( m => m.RegistroAutoPageModule)
+  },
+  {
+    path: 'pagina-principal',
+    loadChildren: () => import('./pages/pagina-principal/pagina-principal.module').then( m => m.PaginaPrincipalPageModule)
+  },
+  {
+    path: 'reestablecer-pass',
+    loadChildren: () => import('./pages/reestablecer-pass/reestablecer-pass.module').then( m => m.ReestablecerPassPageModule)
+  },
+  {
+    path: 'reestablecer',
+    loadChildren: () => import('./pages/reestablecer/reestablecer.module').then( m => m.ReestablecerPageModule)
+  },
+  {
+    path: 'tomar-viaje',
+    loadChildren: () => import('./pages/tomar-viaje/tomar-viaje.module').then( m => m.TomarViajePageModule)
+  },
+  {
+    path: 'pagina-principal',
+    loadChildren: () => import('./pages/pagina-principal/pagina-principal.module').then( m => m.PaginaPrincipalPageModule)
+  },
 
 ];
 
