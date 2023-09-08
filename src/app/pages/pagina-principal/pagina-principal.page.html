@@ -1,13 +1,13 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>paginaPrincipal</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">paginaPrincipal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div>
+      <ion-header style="text-align: center;"><ion-toolbar class="custom-header"><ion-title>
+        Bienvenido
+
+      </ion-title>
+      </ion-toolbar>
+    </ion-header>
+  </div>
+
+  <ion-button shape="round"class="move-button" [routerLink]="['/registro-auto']">Iniciar Viajes</ion-button>
+  <ion-button shape="round"class="move-buton" [routerLink]="['/tomar-viaje']">Buscar Viajes</ion-button>
 </ion-content>

@@ -4,3 +4,18 @@
     align-items: center; /* Centrar verticalmente */
     height: 100vh; /* Esto asegura que el contenedor ocupe toda la altura de la ventana */
   }
+  ion-item{
+    --background:#86112E ;
+    border-radius: 10px;
+    margin-bottom: 16px;
+
+}
+.move-button {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  --background: #EB3E1B;
+  margin-left: 2rem;
+  margin-right:2rem;
+  margin-top: 10%;
+}
