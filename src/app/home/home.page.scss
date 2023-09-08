@@ -25,3 +25,24 @@
 #container a {
   text-decoration: none;
 }
+
+#ContenedorBotonesHome {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+#contenedorBienvenida {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 40%;
+}
+
+.BotonesHome {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  --background: #eb3e1b;
+}

@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reestablecer.page.scss'],
 })
 export class ReestablecerPage implements OnInit {
-
+  contrasena: string = "";
+  contrasenaConf: string = "";
   constructor() { }
 
   ngOnInit() {

@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
-
+  email: string = "";
+  contrasena: string = "";
+  
   constructor() { }
 
   ngOnInit() {

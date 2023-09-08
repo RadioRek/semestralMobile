@@ -1,14 +1,15 @@
 <ion-content [fullscreen]="true">
-  <div>
-      <ion-header style="text-align: center;"><ion-toolbar class="custom-header"><ion-title>
-        Bienvenido
 
-      </ion-title>
-      </ion-toolbar>
-    </ion-header>
+  <div id="contenedorBienvenida">
+    <ion-title style="text-align: center;">
+      Encuentra el viaje para ti!
+    </ion-title>
+    <ion-img src="assets/autoLogo.png"></ion-img>
   </div>
 
-  <ion-button>Iniciar Sesión</ion-button>
-  <ion-button>Registrate</ion-button>
-</ion-content>
+  <div id="ContenedorBotonesHome">
+    <ion-button shape="round" class="BotonesHome" [routerLink]="['/login']">Iniciar Sesión</ion-button>
+    <ion-button shape="round" class="BotonesHome" [routerLink]="['/registro']">Registrate</ion-button>
+  </div>
 
+</ion-content>

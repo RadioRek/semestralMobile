@@ -1,34 +1,32 @@
 <ion-content [fullscreen]="true">
-  <div>
-      <ion-header style="text-align: center;"><ion-toolbar class="custom-header"><ion-title>
-        Bienvenido
+  <div style="margin-top: 55%;">
 
-      </ion-title>
-      </ion-toolbar>
-    </ion-header>
-    
-    
-    <p style="text-align: center;">Ingresa tu correo y  una contraseña para crear tu cuenta</p>
+    <p style="text-align: center; margin-left: 2rem; margin-right: 2rem;">
+      Ingresa tu correo y una contraseña para crear tu cuenta
+    </p>
+
+    <form>
+      <div class="ion-padding">
+        <ion-item>
+          <ion-input [(ngModel)]="email" type="text" placeholder="correo electronico"></ion-input>
+          <ion-icon name="person-outline"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="contrasena" type="password" placeholder="contraseña"></ion-input>
+          <ion-icon name="lock-closed-outline"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="contrasena" type="password" placeholder="confirmar contraseña"></ion-input>
+          <ion-icon name="lock-closed-outline"></ion-icon>
+        </ion-item>
+
+        <div style="display: flex; flex-direction: column;">
+          <ion-button shape="round" class="BotonRegistro" [routerLink]="['/login']">Registrarse</ion-button>
+        </div>
+      </div>
+      <p style="text-align: center;">Ya eres miembro?
+        <a style="color: #FB6D10;" [routerLink]="['/login']">Ingresa aqui</a>
+      </p>
+    </form>
   </div>
-
-  <form>
-    <div class="ion-padding">
-      <ion-item>
-        <ion-input placeholder="correo electronico"></ion-input>
-        <ion-icon name="person-outline"></ion-icon>
-      </ion-item>
-            <ion-item>
-        <ion-input placeholder="contraseña"></ion-input>
-        <ion-icon name="lock-closed-outline"></ion-icon>
-      </ion-item>
-      <ion-item>
-        <ion-input placeholder="confirmar contraseña"></ion-input>
-        <ion-icon name="lock-closed-outline"></ion-icon>
-      </ion-item>
-    </div>
-    <p style="text-align: center;">Ya eres miembro?<a style="color: #FB6D10;">Ingresa aqui</a></p>
-    <ion-fab vertical="bottom" horizontal="end" style="margin-bottom">
-      <ion-icon name="chevron-forward"></ion-icon>
-    </ion-fab>
-  </form>
 </ion-content>

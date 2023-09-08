@@ -1,25 +1,26 @@
 <ion-content [fullscreen]="true">
-  <div>
-    <ion-header style="text-align: center;"><ion-toolbar class="custom-header"><ion-title>
-      Reestablece tu contraseña
+  <ion-header style="text-align: center;"><ion-toolbar class="custom-header"><ion-title>
+        Reestablece tu contraseña
 
-    </ion-title>
+      </ion-title>
     </ion-toolbar>
   </ion-header>
-  
+  <div style="margin-top: 65%;">
     <p style="text-align: center;">Ingresa tu correo y enviaremos un codigo de recuperación</p>
+    <form>
+      <div class="ion-padding">
+        <ion-item>
+          <ion-input [(ngModel)]="email" type="text" placeholder="correo electronico"></ion-input>
+          <ion-icon name="person-outline"></ion-icon>
+        </ion-item>
+        <div style="display: flex; flex-direction: column;">
+          <ion-button shape="round" class="BotonReestablecerPass">Enviar correo</ion-button>
+        </div>
+      </div>
+      <p style="text-align: center;">
+        No encuentras el codigo?
+        <a style="color: #FB6D10;">Reenviar</a>
+      </p>
+    </form>
   </div>
-
-  <form>
-    <div class="ion-padding">
-      <ion-item>
-        <ion-input placeholder="correo electronico"></ion-input>
-        <ion-icon name="person-outline"></ion-icon>
-      </ion-item>
-    </div>
-    <p style="text-align: center;">No encuentras el codigo?<a style="color: #FB6D10;">Reenviar</a></p>
-    <ion-fab vertical="bottom" horizontal="end" style="margin-bottom">
-      <ion-icon name="chevron-forward"></ion-icon>
-    </ion-fab>
-  </form>
 </ion-content>
