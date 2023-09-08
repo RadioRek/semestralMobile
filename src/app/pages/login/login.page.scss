@@ -1,8 +1,8 @@
-.input{
+.input {
     font-size: 300;
 }
 
-ion-item{
+ion-item {
     --background: #86112e;
     border-radius: 10px;
     margin-bottom: 16px;
@@ -13,4 +13,16 @@ ion-item{
     margin-right: 2rem;
     margin-bottom: 2rem;
     --background: #eb3e1b;
-  }
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ion-spinner {
+    width: 200px;
+    height: 200px;
+    --color: #86112e;
+}

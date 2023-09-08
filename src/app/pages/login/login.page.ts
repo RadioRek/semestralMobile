@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { Animation, AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -7,16 +8,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
+
   email: string = "";
   contrasena: string = "";
-  
-  constructor(private router:Router) { }
+  private animation!: Animation;
+  loading: boolean = true;
 
-  ngOnInit() {
+  constructor(private router: Router, private animationCtrl: AnimationController) { }
+
+  cargaFake = () => {
+    this.loading = false;
   }
 
-  login(){
-    if(this.email == "admin" && this.contrasena == "admin"){
+  ngOnInit() {
+    setTimeout(this.cargaFake, 2000);
+  }
+
+  login() {
+    if (this.email == "admin" && this.contrasena == "admin") {
       this.router.navigate(['/pagina-principal']);
     }
   }
