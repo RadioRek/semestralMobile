@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reestablecer-pass.page.scss'],
 })
 export class ReestablecerPassPage implements OnInit {
-
+  email: string = "";
   constructor() { }
 
   ngOnInit() {
