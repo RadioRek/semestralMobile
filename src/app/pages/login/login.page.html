@@ -1,40 +1,61 @@
 <ion-content [fullscreen]="true">
-  <div style="margin-top: 50%;">
-    <div>
-      <p style="text-align: center; padding-right: 2rem; padding-left: 2rem;">Ingresa tu correo y contraseña para
-        acceder a tu cuenta</p>
-    </div>
 
-    <div class="spinner-container">
+  <div style="margin-top: 50%;">
+
+    <div class="spinnerContainer">
+
       <ng-container *ngIf="loading">
-        <ion-spinner name="circles"></ion-spinner>
+
+        <ion-spinner name="circles">
+        </ion-spinner>
+
       </ng-container>
+
     </div>
 
     <ng-container *ngIf="!loading">
-      <form>
-        <div class="ion-padding">
-          <ion-item>
-            <ion-input [(ngModel)]="email" type="text" placeholder="correo electronico"></ion-input>
-            <ion-icon name="person-outline"></ion-icon>
-          </ion-item>
-          <ion-item>
-            <ion-input [(ngModel)]="contrasena" type="password" placeholder="contraseña"></ion-input>
-            <ion-icon name="lock-closed-outline"></ion-icon>
-          </ion-item>
-          <div style="display: flex; flex-direction: column;">
-            <ion-button shape="round" class="BotonLogin" [routerLink]="['/login']">Iniciar Sesión</ion-button>
-          </div>
+      <div class="ion-padding">
 
-        </div>
-        <div style="display: flex; justify-content: center; text-align: center;">
-          <a style="color: #FB6D10;" [routerLink]="['/reestablecer-pass']">Olvidaste tu contraseña?</a>
-        </div>
-
-        <p style="text-align: center;">Nuevo miembro?
-          <a style="color: #FB6D10;" [routerLink]="['/registro']">Registrate aqui</a>
+        <p style="text-align: center; padding-right: 2rem; padding-left: 2rem; font-size: 18px;">
+          Ingresa tu correo y contraseña para acceder a tu cuenta!
         </p>
-      </form>
+
+        <ion-item>
+          <ion-input [(ngModel)]="email" [ngModelOptions]="{standalone: true}" type="email"
+            placeholder="correo electronico" size="large" class="input" labelPlacement="floating" label="Email">
+          </ion-input>
+
+          <ion-icon name="person-outline">
+          </ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="contrasena" [ngModelOptions]="{standalone: true}" type="password"
+            placeholder="contraseña" size="large" class="input" labelPlacement="floating" label="Contraseña">
+          </ion-input>
+
+          <ion-icon name="lock-closed-outline">
+          </ion-icon>
+        </ion-item>
+
+        <div style="display: flex; flex-direction: column; margin-top: 10%;">
+          <ion-button shape="round" class="BotonLogin" (click)="login()" size="large">
+            Iniciar Sesión
+          </ion-button>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: center; text-align: center;">
+        <a style="color: #FB6D10; font-size: 16x;" [routerLink]="['/reestablecer-pass']">
+          Olvidaste tu contraseña?
+        </a>
+      </div>
+      <p style="text-align: center; font-size: 16px;">
+        Nuevo miembro?
+        <a style="color: #FB6D10; font-size: 16px;" [routerLink]="['/registro']">
+          Registrate aqui
+        </a>
+      </p>
     </ng-container>
 
   </div>
