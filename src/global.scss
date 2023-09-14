@@ -24,4 +24,15 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
 
+* {
+    --background: #2e2e41;
+    --ion-color-success: #ffffff;
+    --ion-color-secondary: #ffffff;
+    --ion-color-primary: #ffffff;
+    --ion-color-tertiary: #ffffff;
+    /* font-family: 'Titillium Web', sans-serif; */
+    font-family: 'Comfortaa', cursive;
+}

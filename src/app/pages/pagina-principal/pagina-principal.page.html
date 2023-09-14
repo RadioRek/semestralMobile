@@ -1,13 +1,14 @@
 <ion-content [fullscreen]="true">
-  <div>
-      <ion-header style="text-align: center;"><ion-toolbar class="custom-header"><ion-title>
-        Bienvenido
-
-      </ion-title>
-      </ion-toolbar>
-    </ion-header>
+  <div style="margin-top: 50%;">
+    <div style="display: flex; flex-direction: column; margin-top: 10%;">
+      <ion-button shape="round" class="botonPrincipal" size="large" [routerLink]="['/registro-auto']">
+        Iniciar viajes
+      </ion-button>
+    </div>
+    <div style="display: flex; flex-direction: column; margin-top: 10%;">
+      <ion-button shape="round" class="botonPrincipal" size="large" [routerLink]="['/tomar-viaje']">
+        Buscar viajes
+      </ion-button>
+    </div>
   </div>
-
-  <ion-button shape="round"class="move-button" [routerLink]="['/registro-auto']">Iniciar Viajes</ion-button>
-  <ion-button shape="round"class="move-buton" [routerLink]="['/tomar-viaje']">Buscar Viajes</ion-button>
 </ion-content>

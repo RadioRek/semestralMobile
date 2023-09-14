@@ -1,13 +1,3 @@
-.input {
-    font-size: 300;
-}
-
-ion-item {
-    --background: #86112e;
-    border-radius: 10px;
-    margin-bottom: 16px;
-}
-
 .BotonLogin {
     margin-left: 2rem;
     margin-right: 2rem;
@@ -15,8 +5,9 @@ ion-item {
     --background: #eb3e1b;
 }
 
-.spinner-container {
+.spinnerContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -24,5 +15,5 @@ ion-item {
 ion-spinner {
     width: 200px;
     height: 200px;
-    --color: #86112e;
+    --color: #eb3e1b;
 }
