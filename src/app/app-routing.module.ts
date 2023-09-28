@@ -28,10 +28,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/reestablecer-pass/reestablecer-pass.module').then( m => m.ReestablecerPassPageModule)
   },
   {
-    path: 'reestablecer',
-    loadChildren: () => import('./pages/reestablecer/reestablecer.module').then( m => m.ReestablecerPageModule)
-  },
-  {
     path: 'tomar-viaje',
     loadChildren: () => import('./pages/tomar-viaje/tomar-viaje.module').then( m => m.TomarViajePageModule)
   },
