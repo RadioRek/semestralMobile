@@ -13,9 +13,6 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http'
 
-import { HttpClientModule } from '@angular/common/http';
-
-
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), BrowserAnimationsModule, AppRoutingModule,
