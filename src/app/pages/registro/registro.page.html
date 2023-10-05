@@ -12,11 +12,15 @@
     <form [formGroup]="regForm" novalidate></form>
     <div class="ion-padding">
       <ion-item>
+        <!--    
+          Advertencia de que el campo es obligatorio
+
         <div *ngIf="this.regForm.controls?.['nombre'].touched && this.regForm.controls?['nombre'].invalid">
           <ion-text *ngIf="errorControl.nombre.errors?.required">
             Este campo es obligatorio*
           </ion-text>
         </div>
+        -->
         <ion-input [(ngModel)]="email" [ngModelOptions]="{standalone: true}" type="email"
           placeholder="correo electronico" size="large" class="input" labelPlacement="floating" label="Email">
         </ion-input>
@@ -24,16 +28,20 @@
         <ion-icon name="person-outline">
         </ion-icon>
       </ion-item>
+
+      <!--
+        Advertencia de que el campo es obligatorio y que el email no es valido
+
       <div *ngIf="this.regForm.controls?.['email'].touched && this.regForm.controls?['email'].invalid">
         <ion-text *ngIf="errorControl.email.errors?.required">
           Este campo es obligatorio*
-        </ion-text >
+        </ion-text>
         <ion-text *ngIf="errorControl.email.errors?.pattern">
           Email no valido*
         </ion-text>
       </div>
+      -->
 
-      
       <ion-item>
         <ion-input [(ngModel)]="contrasena" [ngModelOptions]="{standalone: true}" type="password"
           placeholder="contraseña" size="large" class="input" labelPlacement="floating" label="Contraseña">
@@ -42,10 +50,12 @@
         <ion-icon name="lock-closed-outline">
         </ion-icon>
       </ion-item>
+      <!--
+        Advertencia de que el campo es obligatorio y que la contraseña no es valida
       <div *ngIf="this.regForm.controls?.['contrasena'].touched && this.regForm.controls?['contrasena'].invalid">
         <ion-text *ngIf="errorControl.contrasena.errors?.required">
           Este campo es obligatorio*
-        </ion-text >
+        </ion-text>
         <ion-text *ngIf="errorControl.contrasena.errors?.pattern">
           La contraseña debe tener:
           un caracter
@@ -54,10 +64,11 @@
           8 caracteres minimo*
         </ion-text>
       </div>
-
+      -->
       <ion-item>
         <ion-input [(ngModel)]="contrasena" [ngModelOptions]="{standalone: true}" type="password"
-          placeholder="Confirma tu contraseña" size="large" class="input" labelPlacement="floating" label="Confirmar contraseña">
+          placeholder="Confirma tu contraseña" size="large" class="input" labelPlacement="floating"
+          label="Confirmar contraseña">
         </ion-input>
 
         <ion-icon name="lock-closed-outline">

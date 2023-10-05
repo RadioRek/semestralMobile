@@ -14,51 +14,58 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
   templateUrl: './registro.page.html',
   styleUrls: ['./registro.page.scss'],
 })
+
 export class RegistroPage implements OnInit {
-  regForm : FormGroup
+  regForm?: FormGroup
   email: string = "";
   contrasena: string = "";
-  regiones:Region[] = [];
-  comunas:Comuna[] = [];
-  idRegion:number = 0;
-  constructor(private auth:AngularFireAuth,
-    private locationService:LocationServiceService, public formBuilder:FormBuilder, public loadingCtrl: LoadingController, public authService:AuthServiceService) { }
+  regiones: Region[] = [];
+  comunas: Comuna[] = [];
+  idRegion: number = 0;
 
+  constructor(private auth: AngularFireAuth,
+    private locationService: LocationService, public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
+    public authService: AuthServiceService) { }
 
-    mgOnInit() {
-      this.cargarRegiones();
-      this.regForm = this.formBuilder.group({
-      fullname :['', [Validators.required]], email :['', [
-      Validators.required,
-      Validators.email,
-      Validators.pattern("[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"),
+  ngOnInit() {
+    this.cargarRegiones();
+    /*
+    patrones para validar el formulario
+    this.regForm = this.formBuilder.group({
+      fullname: ['', [Validators.required]], email: ['', [
+        Validators.required,
+        Validators.email,
+        Validators.pattern("[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"),
       ]],
-      password:['',[
-      Validators.required,
-      Validators.pattern("(?=.*\d(?=.*[a-z])(?=.*[0-8])(?=.*[A-Z])
+      password: ['', [
+        Validators.required,
+        Validators.pattern("(?=.*\d(?=.*[a-z])(?=.*[0-8])(?=.*[A-Z])
       ]]
       
-      })
-      }
-      async cargarRegiones(){
-        const request = await this.locationService.getRegion();
-        this.regiones = request.data;
-      }
-    
-      async cargarComunas(){
-        const request = await this.locationService.getComuna(this.idRegion);
-        this.comunas = request.data;
-      }
-      get errorControl(){
-        return this.regForm?.controls;
-      }
-    
-      async registro(){
-        const loading = await this.loadingCtrl();
-        await loading.present();
-        if(this.regForm?.valid){
-          
-        }
-    
-      }
+    })
+    */
+  }
+
+  async cargarRegiones() {
+    const request = await this.locationService.getRegion();
+    this.regiones = request.data;
+  }
+
+  async cargarComunas() {
+    const request = await this.locationService.getComuna(this.idRegion);
+    this.comunas = request.data;
+  }
+
+  /* metodos para registrar usuario
+  get errorControl() {
+    return this.regForm?.controls;
+  }
+
+  async registro() {
+    const loading = await this.loadingCtrl();
+    await loading.present();
+    if (this.regForm?.valid) {
+    }
+  }
+  */
 }
