@@ -38,6 +38,22 @@
         </ion-icon>
       </ion-item>
 
+      <ion-item>
+        <ion-select placeholder="Region" [(ngModel)]="idRegion" (ionChange)="cargarComunas()">
+          <ion-select-option [value]="region.id" *ngFor="let region of regiones">
+            {{region.nombre}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select placeholder="Comuna">
+          <ion-select-option [value]="comuna.id" *ngFor="let comuna of comunas">
+            {{comuna.nombre}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
       <div style="display: flex; flex-direction: column; margin-top: 10%;">
         <ion-button shape="round" class="BotonRegistro" size="large">
           Registrarse

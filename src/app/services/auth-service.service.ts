@@ -7,10 +7,11 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class AuthServiceService {
 
+
   constructor(public fireAuth : AngularFireAuth) { }
 
-  login(email: string, password: string) {
-
+  async login(email: string, password: string) {
+    
   }
 
   register(email: string, password: string) {

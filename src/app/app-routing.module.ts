@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+
+const redirectUnauthorizedToHome = () => redirectUnauthorizedTo(['/home']);
+
 const routes: Routes = [
   {
     path: '',
@@ -17,10 +21,12 @@ const routes: Routes = [
   },
   {
     path: 'registro-auto',
+    canActivate: [AngularFireAuthGuard], data:{authGuardPipe: redirectUnauthorizedToHome},
     loadChildren: () => import('./pages/registro-auto/registro-auto.module').then( m => m.RegistroAutoPageModule)
   },
   {
     path: 'pagina-principal',
+    canActivate: [AngularFireAuthGuard], data:{authGuardPipe: redirectUnauthorizedToHome},
     loadChildren: () => import('./pages/pagina-principal/pagina-principal.module').then( m => m.PaginaPrincipalPageModule)
   },
   {
@@ -29,11 +35,8 @@ const routes: Routes = [
   },
   {
     path: 'tomar-viaje',
+    canActivate: [AngularFireAuthGuard], data:{authGuardPipe: redirectUnauthorizedToHome},
     loadChildren: () => import('./pages/tomar-viaje/tomar-viaje.module').then( m => m.TomarViajePageModule)
-  },
-  {
-    path: 'pagina-principal',
-    loadChildren: () => import('./pages/pagina-principal/pagina-principal.module').then( m => m.PaginaPrincipalPageModule)
   },
   {
     path: 'home',
