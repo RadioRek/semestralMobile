@@ -8,18 +8,22 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class AuthServiceService {
 
 
-  constructor(public fireAuth : AngularFireAuth) { }
+  constructor(public fireAuth: AngularFireAuth) { }
 
   async login(email: string, password: string) {
-    
+    return await this.fireAuth.signInWithEmailAndPassword(email, password)
+
   }
 
   register(email: string, password: string) {
-  
+    return await this.fireAuth.createUserWithEmailAndPassword(email, password)
   }
 
   logout() {
-  
+    return await this.fireAuth.signOut()
+
   }
 
-}
+  async reestablecer(email: string) {
+    return await this.ngFireAuth.sendPasswordResetEmail(email)
+  }
