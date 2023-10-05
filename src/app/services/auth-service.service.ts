@@ -9,15 +9,20 @@ export class AuthServiceService {
 
   constructor(public fireAuth : AngularFireAuth) { }
 
-  login(email: string, password: string) {
+  async register(email: string, password: string) {
+  return await this.ngFireAuth.createUserWithEmailAndPassword (email, password)
 
   }
 
-  register(email: string, password: string) {
-  
+  async login(email: string, password: string) {
+  return await this.ngFireAuth.signInWithEmailAndPassword (email, password)
   }
 
-  logout() {
+  async reestablecer(email: string) {
+    return await this.ngFireAuth.sendPasswordResetEmail (email)
+    }
+  async logout() {
+    return await this.ngFireAuth.signOut()
   
   }
 

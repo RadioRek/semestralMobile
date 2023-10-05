@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo([`/home`]);
 const routes: Routes = [
   {
     path: '',
@@ -33,6 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'pagina-principal',
+    canActivate: [AngularFireAuthGuard], data:{authGuardPipe: redirectUnauthorizedToLogin},
     loadChildren: () => import('./pages/pagina-principal/pagina-principal.module').then( m => m.PaginaPrincipalPageModule)
   },
   {

@@ -9,9 +9,14 @@
     <p style="text-align: center; padding-right: 2rem; padding-left: 2rem; font-size: 18px;">
       Ingresa tu correo y una contraseña para crear tu cuenta
     </p>
-
+    <form [formGroup]="regForm" novalidate></form>
     <div class="ion-padding">
       <ion-item>
+        <div *ngIf="this.regForm.controls?.['nombre'].touched && this.regForm.controls?['nombre'].invalid">
+          <ion-text *ngIf="errorControl.nombre.errors?.required">
+            Este campo es obligatorio*
+          </ion-text>
+        </div>
         <ion-input [(ngModel)]="email" [ngModelOptions]="{standalone: true}" type="email"
           placeholder="correo electronico" size="large" class="input" labelPlacement="floating" label="Email">
         </ion-input>
@@ -19,7 +24,16 @@
         <ion-icon name="person-outline">
         </ion-icon>
       </ion-item>
+      <div *ngIf="this.regForm.controls?.['email'].touched && this.regForm.controls?['email'].invalid">
+        <ion-text *ngIf="errorControl.email.errors?.required">
+          Este campo es obligatorio*
+        </ion-text >
+        <ion-text *ngIf="errorControl.email.errors?.pattern">
+          Email no valido*
+        </ion-text>
+      </div>
 
+      
       <ion-item>
         <ion-input [(ngModel)]="contrasena" [ngModelOptions]="{standalone: true}" type="password"
           placeholder="contraseña" size="large" class="input" labelPlacement="floating" label="Contraseña">
@@ -28,6 +42,18 @@
         <ion-icon name="lock-closed-outline">
         </ion-icon>
       </ion-item>
+      <div *ngIf="this.regForm.controls?.['contrasena'].touched && this.regForm.controls?['contrasena'].invalid">
+        <ion-text *ngIf="errorControl.contrasena.errors?.required">
+          Este campo es obligatorio*
+        </ion-text >
+        <ion-text *ngIf="errorControl.contrasena.errors?.pattern">
+          La contraseña debe tener:
+          un caracter
+          una mayuscula
+          un numero
+          8 caracteres minimo*
+        </ion-text>
+      </div>
 
       <ion-item>
         <ion-input [(ngModel)]="contrasena" [ngModelOptions]="{standalone: true}" type="password"
@@ -37,6 +63,23 @@
         <ion-icon name="lock-closed-outline">
         </ion-icon>
       </ion-item>
+
+      <ion-list>
+        <ion-item>
+          <ion-select placeholder="Seleccion region" [(ngModel)]="idRegion" (ionChange)="cargarComunas()">
+            <ion-select-option [value]="region.id" *ngFor= "let region of regiones">{{region.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      
+      <ion-list>
+        <ion-item>
+          <ion-select placeholder="Seleccion comuna">
+            <ion-select-option [value]="comuna.id" *ngFor= "let comuna of comunas">{{comuna.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
 
       <div style="display: flex; flex-direction: column; margin-top: 10%;">
         <ion-button shape="round" class="BotonRegistro" size="large">
