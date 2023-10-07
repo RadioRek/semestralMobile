@@ -48,16 +48,9 @@ export class LoginPage implements OnInit {
     */
   }
 
-
-  async registro() {
-    /*
-    const loading = await this.loadingCtrl();
-    await loading.present();
-    if (this.loginForm?.valid) {
-    */
-  }
-
   async login() {
+
+    
   }
 }
 

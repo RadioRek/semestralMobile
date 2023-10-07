@@ -8,7 +8,7 @@ import { Region } from './models/region';
 @Injectable({
   providedIn: 'root'
 })
-export class LocationServiceService {
+export class LocationService {
 
   constructor(private http:HttpClient) { }
 
