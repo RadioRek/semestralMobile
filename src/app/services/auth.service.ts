@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import firebase from 'firebase/compat/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthService {
 
   constructor(public fireAuth: AngularFireAuth) { }
 
@@ -25,4 +24,5 @@ export class AuthServiceService {
   async reestablecer(email: string) {
     return await this.fireAuth.sendPasswordResetEmail(email)
   }
+
 }

@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { LocationService } from 'src/app/services/location.service';
-import { StorageService } from 'src/app/services/storage.service';
 import { Region } from 'src/app/models/region';
-import { Router } from '@angular/router';
 import { Comuna } from 'src/app/models/comuna';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
-import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -19,16 +16,19 @@ export class RegistroPage implements OnInit {
   regForm?: FormGroup
   email: string = "";
   contrasena: string = "";
+  confirmarContrasena: string = "";
+
   regiones: Region[] = [];
   comunas: Comuna[] = [];
   idRegion: number = 0;
 
-  constructor(private auth: AngularFireAuth,
+  constructor( public authService: AuthService,
     private locationService: LocationService, public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
-    public authService: AuthServiceService) { }
+  ) { }
 
   ngOnInit() {
     this.cargarRegiones();
+
     /*
     patrones para validar el formulario
     this.regForm = this.formBuilder.group({
@@ -60,12 +60,15 @@ export class RegistroPage implements OnInit {
   get errorControl() {
     return this.regForm?.controls;
   }
+  */
+
 
   async registro() {
-    const loading = await this.loadingCtrl();
-    await loading.present();
-    if (this.regForm?.valid) {
+    if (this.contrasena != this.confirmarContrasena) {
+
+    } else if (this.contrasena == this.confirmarContrasena) {
+      this.authService.register(this.email, this.contrasena);
     }
   }
-  */
+
 }

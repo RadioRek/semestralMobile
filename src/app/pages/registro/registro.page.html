@@ -65,7 +65,7 @@
       </div>
       -->
       <ion-item>
-        <ion-input [(ngModel)]="contrasena" [ngModelOptions]="{standalone: true}" type="password"
+        <ion-input [(ngModel)]="confirmarContrasena" [ngModelOptions]="{standalone: true}" type="password"
           placeholder="Confirma tu contraseña" size="large" class="input" labelPlacement="floating"
           label="Confirmar contraseña">
         </ion-input>
@@ -91,7 +91,7 @@
       </ion-item>
 
       <div style="display: flex; flex-direction: column; margin-top: 10%;">
-        <ion-button shape="round" class="BotonRegistro" size="large">
+        <ion-button shape="round" class="BotonRegistro" size="large" (click)="registro()">
           Registrarse
         </ion-button>
       </div>
