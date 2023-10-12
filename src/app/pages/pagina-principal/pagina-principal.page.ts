@@ -1,8 +1,6 @@
-import { Component, OnInit, ElementRef, ViewChildren, ViewChild } from '@angular/core';
-import type { QueryList } from '@angular/core';
-import type { Animation } from '@ionic/angular';
-import { AnimationController, IonCard } from '@ionic/angular';
-
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-pagina-principal',
   templateUrl: './pagina-principal.page.html',
@@ -10,9 +8,13 @@ import { AnimationController, IonCard } from '@ionic/angular';
 })
 export class PaginaPrincipalPage implements OnInit {
 
-  constructor() { }
+  constructor(public authService : AuthService, public router : Router) { }
 
   ngOnInit() {
   }
 
+  async logout() {
+    this.authService.logout();
+    this.router.navigate(['/home']);
+  }
 }

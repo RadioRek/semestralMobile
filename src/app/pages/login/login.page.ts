@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginPage implements OnInit {
   contrasena: string = "";
   loading: boolean = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public authService: AuthService) { }
 
   cargaFake = () => {
     this.loading = false;
@@ -48,7 +49,12 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-
+    this.authService.login(this.email, this.contrasena)
+      .then((res) => {
+        this.router.navigate(['/pagina-principal']);
+      }).catch((error) => {
+        window.alert(error.message)
+      })
     
   }
 }
