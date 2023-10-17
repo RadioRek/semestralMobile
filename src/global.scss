@@ -28,11 +28,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
 
 * {
-    --background: #2e2e41;
     --ion-color-success: #ffffff;
     --ion-color-secondary: #ffffff;
     --ion-color-primary: #ffffff;
     --ion-color-tertiary: #ffffff;
+    --ion-color-danger: #e63227;
     /* font-family: 'Titillium Web', sans-serif; */
     font-family: 'Comfortaa', cursive;
+}
+
+ion-content {
+    --background: linear-gradient(to bottom, #605958, #372f2d);
+}
+
+ion-item {
+    --background: transparent;
+    --ion-border-color: #372f2d;
+}
+
+ion-toolbar {
+    --background: transparent;
 }

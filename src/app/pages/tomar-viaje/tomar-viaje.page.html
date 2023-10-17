@@ -1,17 +1,13 @@
-<ion-toolbar>
-  <ion-buttons slot="start">
-    <ion-back-button defaultHref="/pagina-principal" icon="chevron-back-outline"></ion-back-button>
-  </ion-buttons>
-</ion-toolbar>
-
 <ion-content [fullscreen]="true">
-  <ion-header style="text-align: center;">
-    <ion-toolbar>
-      <ion-title>
-        A donde vas?
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pagina-principal" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-title style="text-align: center;">
+    A donde vas?
+  </ion-title>
 
   <ion-item class="ion-padding">
     <ion-input type="text" placeholder="Busca tu destino" size="large" class="input" labelPlacement="floating"
@@ -21,10 +17,11 @@
     <ion-icon name="search-outline">
     </ion-icon>
   </ion-item>
-
-  <div style="display: flex; flex-direction: column; margin-top: 5%;">
+  
+  <div class="ion-text-center">
     <ion-button shape="round" class="botonBuscar" size="large">
-      Registrar
+      Buscar
     </ion-button>
   </div>
+
 </ion-content>

@@ -5,21 +5,14 @@
 </ion-toolbar>
 
 <ion-content [fullscreen]="true">
-
-  <div style="margin-top: 50%;">
+  <div style="margin-top: 30%;">
     <div class="spinnerContainer">
-
       <ng-container *ngIf="loading">
-
         <ion-spinner name="circles">
         </ion-spinner>
-
       </ng-container>
-
     </div>
-
   </div>
-
 
 
   <ng-container *ngIf="!loading">
@@ -75,18 +68,17 @@
       </div>
 
       <div style="display: flex; justify-content: center; text-align: center;">
-        <a style="color: #FB6D10; font-size: 16x;" [routerLink]="['/reestablecer-pass']">
+        <a style="color: #e55428; font-size: 16x;" [routerLink]="['/reestablecer-pass']">
           Olvidaste tu contraseña?
         </a>
       </div>
       <p style="text-align: center; font-size: 16px;">
         Nuevo miembro?
-        <a style="color: #FB6D10; font-size: 16px;" [routerLink]="['/registro']">
+        <a style="color: #e55428; font-size: 16px;" [routerLink]="['/registro']">
           Registrate aqui
         </a>
       </p>
     </div>
-
 
   </ng-container>
 </ion-content>

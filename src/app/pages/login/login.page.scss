@@ -1,8 +1,8 @@
 .BotonLogin {
-    margin-left: 2rem;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
-    --background: #eb3e1b;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.6rem;
+    --background: linear-gradient(to right, #e67527, #e55428);
 }
 
 .spinnerContainer {
@@ -15,5 +15,6 @@
 ion-spinner {
     width: 200px;
     height: 200px;
-    --color: #eb3e1b;
+    --color: #e55428;
 }
+
