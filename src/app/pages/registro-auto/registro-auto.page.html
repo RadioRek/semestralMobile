@@ -6,9 +6,10 @@
 
 <ion-content [fullscreen]="true">
   <div class="ion-padding" style="margin-top: 50%;">
+    
     <ion-item>
       <ion-input type="text" placeholder="Marca del vehiculo" size="large" class="input" labelPlacement="floating"
-        label="Marca">
+        label="Marca" [(ngModel)]="marca">
       </ion-input>
 
       <ion-icon name="car-sport-outline">
@@ -17,7 +18,7 @@
 
     <ion-item>
       <ion-input type="text" placeholder="Patente del vehiculo" size="large" class="input" labelPlacement="floating"
-        label="Patente">
+        label="Patente" [(ngModel)]="patente">
       </ion-input>
 
       <ion-icon name="tablet-landscape-outline">
@@ -26,7 +27,7 @@
 
     <ion-item>
       <ion-input type="text" placeholder="Color del vehiculo" size="large" class="input" labelPlacement="floating"
-        label="Color">
+        label="Color" [(ngModel)]="color">
       </ion-input>
 
       <ion-icon name="color-palette-outline">
@@ -35,16 +36,24 @@
 
     <ion-item>
       <ion-input type="text" placeholder="Tarifa del vehiculo" size="large" class="input" labelPlacement="floating"
-        label="Tarifa">
+        label="Tarifa" [(ngModel)]="tarifa">
       </ion-input>
 
       <ion-icon name="cash-outline">
       </ion-icon>
     </ion-item>
 
+    <ion-item>
+      <ion-input type="text" placeholder="A donde vas?" size="large" class="input" labelPlacement="floating"
+        label="Destino" [(ngModel)]="destino">
+      </ion-input>
+
+      <ion-icon name="flag-outline">
+      </ion-icon>
+    </ion-item>
 
     <div style="display: flex; flex-direction: column; margin-top: 10%;">
-      <ion-button shape="round" class="BotonRegistro" size="large">
+      <ion-button shape="round" class="BotonRegistro" size="large" (click)="guardarViaje()">
         Registrar
       </ion-button>
     </div>

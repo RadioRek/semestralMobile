@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +21,7 @@ export class LoginPage implements OnInit {
   contrasena: string = "";
   loading: boolean = true;
 
+  helper: HelperService = new HelperService();
   constructor(private router: Router, public authService: AuthService) { }
 
   cargaFake = () => {
@@ -28,7 +29,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(this.cargaFake, 2000);
+    setTimeout(this.cargaFake, 500);
     /*
     this['regForm'] = this.formBuilder.group({
       email: ['', [
@@ -49,13 +50,17 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    this.authService.login(this.email, this.contrasena)
-      .then((res) => {
-        this.router.navigate(['/pagina-principal']);
-      }).catch((error) => {
-        window.alert(error.message)
-      })
-    
+    this.authService.login(this.email, this.contrasena).then((res) => {
+      this.router.navigate(['/pagina-principal']);
+    }).catch((error) => {
+      if (error.code == "auth/invalid-email") {
+        this.helper.mostrarAlerta("El correo ingresado no es valido");
+      } else if (error.code == "auth/invalid-login-credentials") {
+        this.helper.mostrarAlerta("El correo o la contraseña son incorrectos");
+      } else {
+        this.helper.mostrarAlerta("Ocurrio un error inesperado");
+      }
+    })
   }
 }
 

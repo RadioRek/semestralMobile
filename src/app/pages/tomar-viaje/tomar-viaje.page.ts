@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-tomar-viaje',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TomarViajePage implements OnInit {
 
-  constructor() { }
+  constructor(public auth : AuthService) { }
 
   ngOnInit() {
+  }
+
+  async obtenerViajes() {
+    this.auth.obtenerViajes();
   }
 
 }

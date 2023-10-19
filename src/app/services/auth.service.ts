@@ -56,4 +56,44 @@ export class AuthService {
         console.log(err.message);
       })
   }
+
+  async guardarViaje(marca : string, patente : string, color : string, tarifa : number, destino : string, usuario : string) {
+    initializeApp(environment.firebaseConfig);
+    const db = getFirestore();
+    const colRef = collection(db, 'viajes');
+    addDoc(colRef, {
+      marca: marca,
+      patente: patente,
+      color: color,
+      tarifa: tarifa,
+      destino: destino,
+      usuario: usuario
+    })
+  }
+
+  async obtenerViajes() {
+    initializeApp(environment.firebaseConfig);
+    const db = getFirestore();
+    const colRef = collection(db, 'viajes');
+    getDocs(colRef)
+      .then((snapshot) => {
+        let viajes: { [x: string]: any; }[] = [];
+        snapshot.forEach((doc) => {
+          viajes.push({ ...doc.data() });
+        })
+        console.log(viajes);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      })
+  }
+
+  async obtenerUsuarioActual() {
+    const user = await this.fireAuth.currentUser;
+    if (user) {
+      return user.email;
+    } else {
+      return null;
+    }
+  }
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { DeviceService } from 'src/app/services/device.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -17,6 +16,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.presentToast();
   }
+
 
   async getInfo() {
     this.info = await this.device.getInfo();
