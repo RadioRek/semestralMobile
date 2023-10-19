@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { LocationService } from 'src/app/services/location.service';
 import { Region } from 'src/app/models/region';
 import { Comuna } from 'src/app/models/comuna';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -16,6 +17,7 @@ export class RegistroPage implements OnInit {
   regForm?: FormGroup
   email: string = "";
   contrasena: string = "";
+  username: string = "";
   confirmarContrasena: string = "";
 
   regiones: Region[] = [];
@@ -23,7 +25,8 @@ export class RegistroPage implements OnInit {
   idRegion: number = 0;
 
   constructor( public authService: AuthService,
-    private locationService: LocationService, public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
+    private locationService: LocationService, public formBuilder: FormBuilder,
+    public loadingCtrl: LoadingController, public router: Router
   ) { }
 
   ngOnInit() {
@@ -65,9 +68,19 @@ export class RegistroPage implements OnInit {
 
   async registro() {
     if (this.contrasena != this.confirmarContrasena) {
-
+      // agregar toast para mostrar error
     } else if (this.contrasena == this.confirmarContrasena) {
-      this.authService.register(this.email, this.contrasena);
+      this.authService.register(this.email, this.contrasena)
+        .then(() => {
+          this.authService.guardarUsuario(this.email, this.username);
+        })
+        .then(() => {
+          this.router.navigate(['/login']);
+        })
+        .catch((err) => {
+          // agregar toast para mostrar error
+          console.log(err.message);
+        });
     }
   }
 
