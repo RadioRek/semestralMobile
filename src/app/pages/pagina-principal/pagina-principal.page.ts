@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class PaginaPrincipalPage implements OnInit {
 
   constructor(public authService : AuthService, public router : Router) { }
-
+  
   ngOnInit() {
   }
 
@@ -17,4 +17,6 @@ export class PaginaPrincipalPage implements OnInit {
     this.authService.logout();
     this.router.navigate(['/home']);
   }
+
+
 }

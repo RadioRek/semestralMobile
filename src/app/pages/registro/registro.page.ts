@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-registro',
@@ -26,7 +27,7 @@ export class RegistroPage implements OnInit {
 
   constructor( public authService: AuthService,
     private locationService: LocationService, public formBuilder: FormBuilder,
-    public loadingCtrl: LoadingController, public router: Router
+    public loadingCtrl: LoadingController, public router: Router, public helper: HelperService
   ) { }
 
   ngOnInit() {
@@ -68,7 +69,7 @@ export class RegistroPage implements OnInit {
 
   async registro() {
     if (this.contrasena != this.confirmarContrasena) {
-      // agregar toast para mostrar error
+      this.helper.mostrarAlerta("Las contraseñas no coinciden");
     } else if (this.contrasena == this.confirmarContrasena) {
       this.authService.register(this.email, this.contrasena)
         .then(() => {
@@ -78,8 +79,12 @@ export class RegistroPage implements OnInit {
           this.router.navigate(['/login']);
         })
         .catch((err) => {
-          // agregar toast para mostrar error
-          console.log(err.message);
+          if (err.code == "auth/email-already-in-use") {
+            this.helper.mostrarAlerta("El correo ya esta en uso");
+          }
+          if (err.code == "auth/invalid-email") {
+            this.helper.mostrarAlerta("El correo es invalido");
+          }
         });
     }
   }
