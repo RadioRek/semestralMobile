@@ -19,4 +19,7 @@
   --background: linear-gradient(to right, #e67527, #e55428);
 }
 
-
+// para modificar el color del toast se modifica lo siguiente
+ion-toast.custom-toast {
+  --background: #e55428;
+}

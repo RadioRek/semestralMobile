@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
+import { DeviceService } from 'src/app/services/device.service';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  info: any;
+
+  constructor(public device: DeviceService, public toastController: ToastController) { }
 
   ngOnInit() {
+    this.presentToast();
   }
 
+  async getInfo() {
+    this.info = await this.device.getInfo();
+  }
+
+  async presentToast() {
+    await this.getInfo();
+    if (this.info['operatingSystem'] == "ios") {
+      const toast = await this.toastController.create({
+        message: 'Enserio usas un iphone? que mal...',
+        duration: 5000,
+        position: 'bottom',
+      });
+      await toast.present();
+    }
+    else {
+      const toast = await this.toastController.create({
+        message: 'Mientras mas abierto sea el sistema operativo, mejor',
+        duration: 5000,
+        position: 'bottom',
+      });
+      await toast.present();
+    }
+  }
 }
