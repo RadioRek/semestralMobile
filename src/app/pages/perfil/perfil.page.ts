@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HelperService } from 'src/app/services/helper.service';
+
 
 @Component({
   selector: 'app-perfil',
@@ -7,17 +9,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  email: string | undefined;
-  static updateProfile(arg0: { displayName: string; }) {
-    throw new Error('Method not implemented.');
-  }
 
-  constructor(private route: ActivatedRoute) { }
+
+
+  constructor(private route: ActivatedRoute, public helper : HelperService) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.email = params.get('email');
-    });
+
   }
 
 }
