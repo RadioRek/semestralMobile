@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+import { PerfilPageModule } from './pages/perfil/perfil.module';
 
 const redirectUnauthorizedToHome = () => redirectUnauthorizedTo(['/home']);
 
@@ -41,6 +42,13 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+    {path: 'email/:email', component: PerfilPageModule},
+  
+
 
 ];
 
