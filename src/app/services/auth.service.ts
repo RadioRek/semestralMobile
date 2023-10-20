@@ -50,7 +50,6 @@ export class AuthService {
         snapshot.forEach((doc) => {
           usuarios.push({ ...doc.data() });
         })
-        console.log(usuarios);
       })
       .catch((err) => {
         console.log(err.message);
@@ -75,18 +74,14 @@ export class AuthService {
     initializeApp(environment.firebaseConfig);
     const db = getFirestore();
     const colRef = collection(db, 'viajes');
-    getDocs(colRef)
-      .then((snapshot) => {
-        let viajes: { [x: string]: any; }[] = [];
-        snapshot.forEach((doc) => {
-          viajes.push({ ...doc.data() });
-        })
-        console.log(viajes);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      })
+    const snapshot = await getDocs(colRef);
+    const viajes: { [x: string]: any; }[] = [];
+    snapshot.forEach((doc) => {
+      viajes.push({ ...doc.data() });
+    });
+    return viajes;
   }
+  
 
   async obtenerUsuarioActual() {
     const user = await this.fireAuth.currentUser;

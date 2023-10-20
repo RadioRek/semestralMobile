@@ -5,23 +5,45 @@
     </ion-buttons>
   </ion-toolbar>
 
-  <ion-title style="text-align: center;">
-    A donde vas?
-  </ion-title>
+  <div class="container">
+    <h3 class="ion-text-center">a donde vas?</h3>
+    <ion-item class="ion-padding">
 
-  <ion-item class="ion-padding">
-    <ion-input type="text" placeholder="Busca tu destino" size="large" class="input" labelPlacement="floating"
-      label="Destino">
-    </ion-input>
+      <ion-input type="text" placeholder="Busca tu destino" size="large" class="input" labelPlacement="floating"
+        label="Destino">
+      </ion-input>
+  
+      <ion-icon name="search-outline">
+      </ion-icon>
+    </ion-item>
+  </div>
 
-    <ion-icon name="search-outline">
-    </ion-icon>
-  </ion-item>
+
+
   
   <div class="ion-text-center">
     <ion-button shape="round" class="botonBuscar" size="large" (click)="obtenerViajes()"> 
       Buscar
     </ion-button>
   </div>
+  
+  <ng-container *ngIf="listaViajes">
+    <ion-card *ngFor="let viaje of listaViajes">
+      <ion-card-header>
+        <ion-card-title>{{ viaje.destino }}</ion-card-title>
+        <ion-card-subtitle>{{viaje.usuario}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        color: {{viaje.color}} <br>
+        marca: {{viaje.marca}} <br>
+        destino: {{viaje.destino}} <br>
+        tarifa: ${{viaje.tarifa}} <br>      
+      </ion-card-content>
+    </ion-card>
+
+
+  </ng-container>
+
+
 
 </ion-content>

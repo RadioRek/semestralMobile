@@ -25,7 +25,6 @@ export class RegistroAutoPage implements OnInit {
     await this.auth.obtenerUsuarioActual().then((res) => {
       let cosa: any = res;
       this.usuario = cosa;
-      console.log(this.usuario);
     })
   }
 
