@@ -16,16 +16,18 @@ import { HelperService } from 'src/app/services/helper.service';
 
 export class RegistroPage implements OnInit {
   regForm?: FormGroup
+
+  username: string = "";
   email: string = "";
   contrasena: string = "";
-  username: string = "";
+
   confirmarContrasena: string = "";
 
   regiones: Region[] = [];
   comunas: Comuna[] = [];
   idRegion: number = 0;
 
-  constructor( public authService: AuthService,
+  constructor(public authService: AuthService,
     private locationService: LocationService, public formBuilder: FormBuilder,
     public loadingCtrl: LoadingController, public router: Router, public helper: HelperService
   ) { }
@@ -68,24 +70,44 @@ export class RegistroPage implements OnInit {
 
 
   async registro() {
-    if (this.contrasena != this.confirmarContrasena) {
-      this.helper.mostrarAlerta("Las contraseñas no coinciden");
-    } else if (this.contrasena == this.confirmarContrasena) {
-      this.authService.register(this.email, this.contrasena)
-        .then(() => {
-          this.authService.guardarUsuario(this.email, this.username);
-        })
-        .then(() => {
-          this.router.navigate(['/login']);
-        })
-        .catch((err) => {
-          if (err.code == "auth/email-already-in-use") {
-            this.helper.mostrarAlerta("El correo ya esta en uso");
-          }
-          if (err.code == "auth/invalid-email") {
-            this.helper.mostrarAlerta("El correo es invalido");
-          }
-        });
+
+    // primero comprobamos si los campos estan vacios
+
+    if (this.email === "" || this.contrasena === "" || this.username === ""
+      || this.confirmarContrasena === "") {
+
+      this.helper.mostrarAlerta("Campo vacio");
+
+    } else {
+
+      // comprobar si los campos tienen almenos 7 digitos
+      if (this.email.length >= 8 && this.contrasena.length >= 8 && this.username.length >= 8 && this.confirmarContrasena.length >= 8) {
+
+        this.helper.mostrarAlerta("Todos los campos tienen al menos 8 caracteres o dígitos.");
+        if (this.contrasena === this.confirmarContrasena) {
+
+          this.authService.register(this.email, this.contrasena)
+            .then(() => {
+              this.authService.guardarUsuario(this.email, this.username);
+            })
+            .then(() => {
+              this.router.navigate(['/login']);
+            })
+            .catch((err) => {
+              if (err.code == "auth/email-already-in-use") {
+                this.helper.mostrarAlerta("El correo ya esta en uso");
+              }
+              if (err.code == "auth/invalid-email") {
+                this.helper.mostrarAlerta("El correo es invalido");
+              }
+            });
+
+        } else {
+          this.helper.mostrarAlerta("las contraseñas no coinciden");
+        }
+      } else {
+        this.helper.mostrarAlerta("Alguno de los campos no cumple con la longitud mínima requerida");
+      }
     }
   }
 
