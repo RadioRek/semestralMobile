@@ -10,6 +10,7 @@ import { HelperService } from 'src/app/services/helper.service';
 export class TomarViajePage implements OnInit {
 
   listaViajes : any = [];
+  viajeTomado : string = '';
 
   constructor(public auth: AuthService, public helper : HelperService) { }
 
@@ -26,8 +27,15 @@ export class TomarViajePage implements OnInit {
     }
   }
 
-
-
-
-
+  async tomarViaje(id : string) {
+    this.viajeTomado = id;
+    console.log(this.viajeTomado);
+    let valor = await this.auth.borrarViaje(this.viajeTomado);
+    if (valor == null) {
+      this.helper.mostrarAlerta('No se pudo tomar el viaje');
+    } else {
+      this.helper.mostrarAlerta('Viaje tomado');
+      this.obtenerViajes();
+    }
+  }
 }

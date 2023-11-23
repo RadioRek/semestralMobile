@@ -2,3 +2,10 @@
   --background: linear-gradient(to right, #e67527, #e55428);
 }
 
+a {
+  text-decoration: none;
+}
+
+ion-card:active {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}

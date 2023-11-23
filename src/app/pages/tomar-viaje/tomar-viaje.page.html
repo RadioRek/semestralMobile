@@ -4,46 +4,34 @@
       <ion-back-button defaultHref="/pagina-principal" icon="chevron-back-outline"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
-
   <div class="container">
     <h3 class="ion-text-center">a donde vas?</h3>
     <ion-item class="ion-padding">
-
       <ion-input type="text" placeholder="Busca tu destino" size="large" class="input" labelPlacement="floating"
         label="Destino">
       </ion-input>
-  
       <ion-icon name="search-outline">
       </ion-icon>
     </ion-item>
+    <h3 class="ion-text-center">Presiona cualquier viaje para tomarlo owo</h3>
   </div>
-
-
-
-  
   <div class="ion-text-center">
-    <ion-button shape="round" class="botonBuscar" size="large" (click)="obtenerViajes()"> 
+    <ion-button shape="round" class="botonBuscar" size="large" (click)="obtenerViajes()">
       Buscar
     </ion-button>
   </div>
-  
   <ng-container *ngIf="listaViajes">
     <ion-card *ngFor="let viaje of listaViajes">
       <ion-card-header>
-        <ion-card-title>{{ viaje.destino }}</ion-card-title>
+        <ion-card-title>{{viaje.destino}}</ion-card-title>
         <ion-card-subtitle>{{viaje.usuario}}</ion-card-subtitle>
       </ion-card-header>
-      <ion-card-content>
+      <ion-card-content (click)="tomarViaje(viaje.id)">
         color: {{viaje.color}} <br>
         marca: {{viaje.marca}} <br>
         destino: {{viaje.destino}} <br>
-        tarifa: ${{viaje.tarifa}} <br>      
+        tarifa: ${{viaje.tarifa}} <br>
       </ion-card-content>
     </ion-card>
-
-
   </ng-container>
-
-
-
 </ion-content>

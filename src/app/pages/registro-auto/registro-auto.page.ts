@@ -43,7 +43,6 @@ export class RegistroAutoPage implements OnInit {
       .then(() => {
         this.auth.guardarViaje(this.marca, this.patente, this.color, this.tarifa, this.destino, this.usuario)
           .then(() => {
-            this.helper.mostrarAlerta('Viaje guardado con exito!');
             this.router.navigate(['/pagina-principal']);
           })
       }).catch((err) => {
