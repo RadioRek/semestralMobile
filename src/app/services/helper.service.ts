@@ -16,6 +16,7 @@ export class HelperService {
 
     document.body.appendChild(alert);
     await alert.present();
+    return alert;
   }
 
 }

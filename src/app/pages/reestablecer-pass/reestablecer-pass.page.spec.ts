@@ -5,7 +5,7 @@ describe('ReestablecerPassPage', () => {
   let component: ReestablecerPassPage;
   let fixture: ComponentFixture<ReestablecerPassPage>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     fixture = TestBed.createComponent(ReestablecerPassPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
