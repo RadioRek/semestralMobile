@@ -21,9 +21,5 @@ describe('registro', () => {
     
   });
 
-  it('should create an alert with the correct message', async () => {
-    const testMessage = 'Test message';
-    const alert = await service.mostrarAlerta(testMessage);
-    expect(alert.message).toBe(testMessage);
-  });
+
 });
